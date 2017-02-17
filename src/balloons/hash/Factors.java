@@ -17,10 +17,10 @@ public class Factors {
 	public static List<Integer> getFactorsForNumber(int n) {
 		List<Integer> factorsForNumber = new ArrayList<Integer>();
 		factorsForNumber.add(1);
-		factorsForNumber.add(n);
 		for(int i = 2; i <= (n+1)/2; i ++) {
 			if(n%i == 0) factorsForNumber.add(i);
 		}
+		factorsForNumber.add(n);
 		return factorsForNumber;
 	}
 
