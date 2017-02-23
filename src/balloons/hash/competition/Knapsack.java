@@ -6,8 +6,8 @@ import java.util.HashMap;
 public class Knapsack {
 	
 	//return list of videos should be in this cache
-    public static ArrayList<Integer> knapsack(int cacheSize, HashMap<Integer, Integer> videos, int videos_valu[]) {
-//        int N = wt.length; // Get the total number of items. Could be wt.length or val.length. Doesn't matter
+    public static ArrayList<Integer> knapsack(int cacheSize, HashMap<Integer, Integer> videos, int videos_value[]) {
+        int N = wt.length; // Get the total number of items. Could be wt.length or val.length. Doesn't matter
 //        int[][] V = new int[N + 1][cacheSize + 1]; //Create a matrix. Items are in rows and weight at in columns +1 on each side
 //        //What if the knapsack's capacity is 0 - Set all columns at row 0 to be 0
 //        for (int col = 0; col <= cacheSize; col++) {
