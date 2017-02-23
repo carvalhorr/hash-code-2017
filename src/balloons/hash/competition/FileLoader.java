@@ -40,9 +40,9 @@ public class FileLoader {
 			int numberOfCachesConnected = scan.nextInt();
 			Integer[] lantenciesToCaches = new Integer[c];
 			for (int j = 0; j < numberOfCachesConnected; j++) {
-				int endpoint = scan.nextInt();
+				int cache = scan.nextInt();
 				int latency = scan.nextInt();
-				lantenciesToCaches[endpoint] = latency;
+				lantenciesToCaches[cache] = latency;
 			}
 			endpointsLatenciesToCaches.put(i, lantenciesToCaches);
 		}
@@ -53,7 +53,7 @@ public class FileLoader {
 			int video = scan.nextInt();
 			int endpoint = scan.nextInt();
 			int numberOfRequests = scan.nextInt();
-			requestsPerEndpoint.get(video)[endpoint] = numberOfRequests;
+			requestsPerEndpoint.get(video)[endpoint] += numberOfRequests;
 		}
 
 		return new VideoInfo(v, e, r, c, x, videos, endpointsLatenciesToDatacenter, endpointsLatenciesToCaches,
@@ -65,6 +65,9 @@ public class FileLoader {
 		Map<Integer, Integer[]> requestsPerEndpoints = new HashMap<Integer, Integer[]>();
 		for (int i = 0; i < numberOfVideos; i++) {
 			Integer[] requestsFromEndpoints = new Integer[numberOfEndpoints];
+			for(int j = 0; j < numberOfEndpoints; j++) {
+				requestsFromEndpoints[j] = 0;
+			}
 			requestsPerEndpoints.put(i, requestsFromEndpoints);
 		}
 		return requestsPerEndpoints;
