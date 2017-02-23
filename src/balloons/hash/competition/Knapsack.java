@@ -34,7 +34,7 @@ public class Knapsack {
 		int prev_key = 0;
 		Iterator it = videos.entrySet().iterator();
 		
-		for ( int item = 0; item < videos.size(); item++) {
+		for ( int item = 0; item <= videos.size(); item++) {
 			//Let's fill the values row by row
 			for ( int size = 0; size <= cacheSize; size++ ) { 
                 if ( item == 0 || size == 0 ) 
@@ -52,10 +52,11 @@ public class Knapsack {
 					V[item][size]=V[item-1][size];
 				}
 			}
-			Map.Entry video = (Entry) it.next();
-			prev_key = (int) video.getKey();
-			prev_value = (int) video.getValue();
-			item++;
+			if ( it.hasNext() ) {
+				Map.Entry video = (Entry) it.next();
+				prev_key = (int) video.getKey();
+				prev_value = (int) video.getValue();
+			}
 		}
 		
         //Printing the matrix
