@@ -12,23 +12,23 @@ import balloons.hash.PizzaInfo;
 
 public class FileLoader {
 
-	public static void loadInfo(String fileName) throws FileNotFoundException {
-		
+	public static VideoInfo loadInfo(String fileName) throws FileNotFoundException {
+
 		Scanner scan = new Scanner(new File(fileName));
-		
+
 		// Reads the parameters
 		int v = scan.nextInt();
 		int e = scan.nextInt();
 		int r = scan.nextInt();
 		int c = scan.nextInt();
 		int x = scan.nextInt();
-		
+
 		// Read videos sizes
 		int[] videos = new int[v];
-		for (int i = 0; i < v; i ++) {
+		for (int i = 0; i < v; i++) {
 			videos[i] = scan.nextInt();
 		}
-		
+
 		// Reads endpoints information
 		Map<Integer, Integer> endpointsLatenciesToDatacenter = new HashMap<Integer, Integer>();
 		Map<Integer, Integer[]> endpointsLatenciesToCaches = new HashMap<Integer, Integer[]>();
@@ -46,7 +46,7 @@ public class FileLoader {
 			}
 			endpointsLatenciesToCaches.put(i, lantenciesToCaches);
 		}
-		
+
 		// Reads requests per video
 		Map<Integer, Integer[]> requestsPerEndpoint = createInitializedRequestsPerEndpoint(v, e);
 		for (int i = 0; i < r; i++) {
@@ -55,12 +55,15 @@ public class FileLoader {
 			int numberOfRequests = scan.nextInt();
 			requestsPerEndpoint.get(video)[endpoint] = numberOfRequests;
 		}
+
+		return new VideoInfo(v, e, r, c, x, videos, endpointsLatenciesToDatacenter, endpointsLatenciesToCaches,
+				requestsPerEndpoint);
 	}
-	
-	
-	private static Map<Integer, Integer[]> createInitializedRequestsPerEndpoint(int numberOfVideos, int numberOfEndpoints) {
-		Map<Integer, Integer[]> requestsPerEndpoints =  new HashMap<Integer, Integer[]>();
-		for (int i = 0; i < numberOfVideos; i ++) {
+
+	private static Map<Integer, Integer[]> createInitializedRequestsPerEndpoint(int numberOfVideos,
+			int numberOfEndpoints) {
+		Map<Integer, Integer[]> requestsPerEndpoints = new HashMap<Integer, Integer[]>();
+		for (int i = 0; i < numberOfVideos; i++) {
 			Integer[] requestsFromEndpoints = new Integer[numberOfEndpoints];
 			requestsPerEndpoints.put(i, requestsFromEndpoints);
 		}
