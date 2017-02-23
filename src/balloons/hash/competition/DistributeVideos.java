@@ -11,7 +11,7 @@ public class DistributeVideos {
 	public static void distributeVideos(String fileName) throws FileNotFoundException {
 		VideoInfo videoInfo = FileLoader.loadInfo(fileName);
 		for (int cache = 0; cache < videoInfo.c; cache++) {
-			
+			 
 		}
 	}
 	
