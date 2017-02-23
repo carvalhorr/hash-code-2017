@@ -5,43 +5,53 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import balloons.hash.competition.Knapsack;
+
 public class PizzaSlicer {
 
 	private static int currentSlice = 1;
 
 	public static void main(String[] args) throws FileNotFoundException {
 		
-		// Slice the example pizza
-		PizzaInfo examplePizza = PizzaInfoFileLoader.loadPizza("data/example.in");
-		SlicedPizza examplePizzaSliced = slicePizza(examplePizza, 0);
-		Step2.run(examplePizza, examplePizzaSliced);
-		OutputWriter.writeOutput("data/example.out", examplePizzaSliced);
-		System.out.println(
-				"Number of cells not included in a slice for the example pizza :" + SlicedPizzaCounter.countSlicesNotIncluded(examplePizzaSliced.slicedPizza));
-
-		// Slice the small pizza
-		PizzaInfo smallPizza = PizzaInfoFileLoader.loadPizza("data/small.in");
-		SlicedPizza smallPizzaSliced = slicePizza(smallPizza, 0);
-		Step2.run(smallPizza, smallPizzaSliced);
-		OutputWriter.writeOutput("data/small.out", smallPizzaSliced);
-		System.out.println(
-				"Number of cells not included in a slice for the small pizza :" + SlicedPizzaCounter.countSlicesNotIncluded(smallPizzaSliced.slicedPizza));
-
-		// Slice the medium pizza
-		PizzaInfo mediumPizza = PizzaInfoFileLoader.loadPizza("data/medium.in");
-		SlicedPizza mediumPizzaSliced = slicePizza(mediumPizza, 0);
-		Step2.run(mediumPizza, mediumPizzaSliced);
-		OutputWriter.writeOutput("data/medium.out", mediumPizzaSliced);
-		System.out.println(
-				"Number of cells not included in a slice for the medium pizza :" + SlicedPizzaCounter.countSlicesNotIncluded(mediumPizzaSliced.slicedPizza));
-
-		// Slice the big pizza
-		PizzaInfo bigPizza = PizzaInfoFileLoader.loadPizza("data/big.in");
-		SlicedPizza bigPizzaSliced = slicePizza(bigPizza, 0);
-		Step2.run(bigPizza, bigPizzaSliced);
-		OutputWriter.writeOutput("data/big.out", bigPizzaSliced);
-		System.out.println(
-				"Number of cells not included in a slice for the big pizza :" + SlicedPizzaCounter.countSlicesNotIncluded(bigPizzaSliced.slicedPizza));
+//		// Slice the example pizza
+//		PizzaInfo examplePizza = PizzaInfoFileLoader.loadPizza("data/example.in");
+//		SlicedPizza examplePizzaSliced = slicePizza(examplePizza, 0);
+//		Step2.run(examplePizza, examplePizzaSliced);
+//		OutputWriter.writeOutput("data/example.out", examplePizzaSliced);
+//		System.out.println(
+//				"Number of cells not included in a slice for the example pizza :" + SlicedPizzaCounter.countSlicesNotIncluded(examplePizzaSliced.slicedPizza));
+//
+//		// Slice the small pizza
+//		PizzaInfo smallPizza = PizzaInfoFileLoader.loadPizza("data/small.in");
+//		SlicedPizza smallPizzaSliced = slicePizza(smallPizza, 0);
+//		Step2.run(smallPizza, smallPizzaSliced);
+//		OutputWriter.writeOutput("data/small.out", smallPizzaSliced);
+//		System.out.println(
+//				"Number of cells not included in a slice for the small pizza :" + SlicedPizzaCounter.countSlicesNotIncluded(smallPizzaSliced.slicedPizza));
+//
+//		// Slice the medium pizza
+//		PizzaInfo mediumPizza = PizzaInfoFileLoader.loadPizza("data/medium.in");
+//		SlicedPizza mediumPizzaSliced = slicePizza(mediumPizza, 0);
+//		Step2.run(mediumPizza, mediumPizzaSliced);
+//		OutputWriter.writeOutput("data/medium.out", mediumPizzaSliced);
+//		System.out.println(
+//				"Number of cells not included in a slice for the medium pizza :" + SlicedPizzaCounter.countSlicesNotIncluded(mediumPizzaSliced.slicedPizza));
+//
+//		// Slice the big pizza
+//		PizzaInfo bigPizza = PizzaInfoFileLoader.loadPizza("data/big.in");
+//		SlicedPizza bigPizzaSliced = slicePizza(bigPizza, 0);
+//		Step2.run(bigPizza, bigPizzaSliced);
+//		OutputWriter.writeOutput("data/big.out", bigPizzaSliced);
+//		System.out.println(
+//				"Number of cells not included in a slice for the big pizza :" + SlicedPizzaCounter.countSlicesNotIncluded(bigPizzaSliced.slicedPizza));
+		
+		int []size={5,4,6,3};
+		Map<Integer, Integer> videos = new HashMap<>();
+		videos.put(0, 10);
+		videos.put(1, 40);
+		videos.put(2, 30);
+		videos.put(3, 50);
+		Knapsack.knapsack(10, videos,size );
 	}
 
 	/**
